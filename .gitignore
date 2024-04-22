@@ -1,18 +1,11 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿CasualProfile/District 3 App/.vs/
+CasualProfile/District 3 App/obj/
+CasualProfile/District 3 App/bin/
 
-<<<<<<< HEAD
-/District 3 App/.vs/District 3 App/FileContentIndex
-'application/cache' 
-Statistics/.vs/Statistics/FileContentIndex/51a55031-357c-43a8-9a0e-b79a01a403d2.vsidx
-*.vsidx
-=======
-/.vs/Repo/FileContentIndex/a9902dbd-c65b-49aa-831e-2c1a82dcf311.vsidx
-/lab4/.vs/lab4/FileContentIndex/d964e44d-f44b-4f0d-9f76-e9769e5fb700.vsidx
-*.vsidx
->>>>>>> statistics
-District 3 App/.vs/District 3 App/v17/DocumentLayout.json
-District 3 App/.vs/District 3 App/v17/.suo
-/District 3 App/obj
+bin/
+obj/
+.vs/
 
+**/bin/
+**/obj/
+**/.vs/

@@ -7,6 +7,7 @@ E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\District 3 App Tests.runtimeconfig.json
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\District 3 App Tests.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\District 3 App Tests.pdb
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Castle.Core.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CoreUtilities.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.TestPlatform.PlatformAbstractions.dll
@@ -15,8 +16,10 @@ E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Moq.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Newtonsoft.Json.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\NuGet.Frameworks.dll
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\xunit.abstractions.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\xunit.assert.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\xunit.core.dll
@@ -86,19 +89,17 @@ E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.csproj.AssemblyReference.cache
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.GeneratedMSBuildEditorConfig.editorconfig
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.AssemblyInfoInputs.cache
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.AssemblyInfo.cs
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.csproj.CoreCompileInputs.cache
+E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.sourcelink.json
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District.9BEF934F.Up2Date
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\refint\District 3 App Tests.dll
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.pdb
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\District 3 App Tests.genruntimeconfig.cache
 E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\obj\Debug\net8.0\ref\District 3 App Tests.dll
-E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Castle.Core.dll
-E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\Moq.dll
-E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
-E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
-E:\Downloads\CasualProfile_fr\CasualProfile\District 3 App Tests\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
