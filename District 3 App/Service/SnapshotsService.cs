@@ -11,7 +11,7 @@ using District_3_App.Repository;
 
 namespace District_3_App.Service
 {
-    internal class SnapshotsService
+    public class SnapshotsService
     {
         private SnapshotsRepo snapshotsRepo;
         private Guid userId;

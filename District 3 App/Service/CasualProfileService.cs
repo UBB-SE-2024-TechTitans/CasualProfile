@@ -13,7 +13,7 @@ using District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Service;
 
 namespace District_3_App.Service
 {
-    internal class CasualProfileService
+    public class CasualProfileService
     {
         private SnapshotsService SnapshotsService { get; set; }
         private ProfileInfoSettings ProfileInfoSettings { get; set; }

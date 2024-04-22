@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.FriendsSettings
 {
-    internal class UserInfo
+    public class UserInfo
     {
         public Guid Id { get; set; }
         public string Username { get; set; }

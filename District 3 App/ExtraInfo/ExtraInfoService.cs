@@ -8,7 +8,7 @@ using District_3_App.Statistics;
 
 namespace District_3_App.ExtraInfo
 {
-    internal class ExtraInfoService
+    public class ExtraInfoService
     {
         private StatisticsService statisticsService;
         private ProfileNetworkInfoService profileNetworkInfoService;

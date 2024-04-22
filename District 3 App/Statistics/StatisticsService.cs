@@ -14,7 +14,7 @@ using District_3_App.Repository;
 
 namespace District_3_App.Statistics
 {
-    internal class StatisticsService
+    public class StatisticsService
     {
         private int timeSpentOnAppToday = 0;
         private int timeSpentOnAppMonthly = 0;

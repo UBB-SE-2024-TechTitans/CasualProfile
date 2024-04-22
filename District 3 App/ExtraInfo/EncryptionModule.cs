@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.ExtraInfo
 {
-    internal class EncryptionModule
+    public class EncryptionModule
     {
     }
 }

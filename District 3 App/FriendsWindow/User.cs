@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.FriendsWindow
 {
-    internal class User
+    public class User
     {
         private Guid Id { get; set; }
         public string Username { get; set; }

@@ -9,7 +9,7 @@ using District_3_App.Enitities.Mocks;
 
 namespace District_3_App.Repository
 {
-    internal class HighlightsRepo
+    public class HighlightsRepo
     {
         private Dictionary<Guid, Dictionary<Guid, Highlight>> userHighlights = new Dictionary<Guid, Dictionary<Guid, Highlight>>();
         private string filePath;

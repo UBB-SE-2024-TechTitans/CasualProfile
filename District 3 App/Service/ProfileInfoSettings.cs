@@ -7,7 +7,7 @@ using District_3_App.Repository;
 
 namespace District_3_App.Service
 {
-    internal class ProfileInfoSettings
+    public class ProfileInfoSettings
     {
         private FancierProfileRepo fancierRepo = new FancierProfileRepo();
         private Guid profileId;

@@ -9,7 +9,7 @@ using District_3_App.Enitities.Mocks;
 
 namespace District_3_App.Repository
 {
-    internal class SnapshotsRepo
+    public class SnapshotsRepo
     {
         private HighlightsRepo highlightsRepo = new HighlightsRepo();
         private Guid userId;

@@ -68,7 +68,7 @@ namespace District_3_App.Enitities
             this.highlightId = guid;
         }
 
-        internal void SetListPosts(List<string> list)
+        public void SetListPosts(List<string> list)
         {
             List<Guid> guids = new List<Guid>();
             foreach (var post in list)

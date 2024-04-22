@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.ProfilePage.Entities
 {
-    internal class User
+    public class User
     {
         private Guid id;
         private DateTime birthday;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.Enitities.Mocks
 {
-    internal class MockPost
+    public class MockPost
     {
         private Guid postId;
         private object user;

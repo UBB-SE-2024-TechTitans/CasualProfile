@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace District_3_App.Enitities.Mocks
 {
-    internal class MockPhotoPost : MockPost
+    public class MockPhotoPost : MockPost
     {
         private string description;
         private string filePath;
