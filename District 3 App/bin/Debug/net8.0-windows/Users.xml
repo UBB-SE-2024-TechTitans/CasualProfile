@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserAccounts>
+  <User id="c0bd0ccc-cc5d-4bc1-8018-c4b050d0c39f" Username="cox_cox1" Email="cox@cox.com" Password="cox123" ConfirmationPassword="cox123">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="7ff01635-8deb-4696-a0aa-b3ea5571cd4a" Username="cox_cox123" Email="coxcox123@gmail.com" Password="Cox123" ConfirmationPassword="Cox123">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+</UserAccounts>
