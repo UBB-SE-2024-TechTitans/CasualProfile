@@ -30,7 +30,7 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Reposi
             SaveGroupsInXML();
         }
 
-        public List<Group> LoadGroupsFromXML()
+        private List<Group> LoadGroupsFromXML()
         {
             List<Group> loadedGroups = new List<Group>();
 
@@ -68,7 +68,7 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Reposi
             return loadedGroups;
         }
 
-        public void SaveGroupsInXML()
+        private void SaveGroupsInXML()
         {
             XmlDocument xmlDocument = new XmlDocument();
 
