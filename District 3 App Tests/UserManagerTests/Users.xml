@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserAccounts>
+  <User id="f641b016-0e18-4f35-898c-c6016fe034f4" Username="test_0" Email="test0@yahoo.com" Password="Test-9" ConfirmationPassword="Test-9">
+    <Following>100</Following>
+    <Followers>103</Followers>
+  </User>
+  <User id="11111111-1111-1111-1111-111111111111" Username="test_1" Email="test1@yahoo.com" Password="Test-1" ConfirmationPassword="Test-1">
+    <Following>100</Following>
+    <Followers>103</Followers>
+  </User>
+  <User id="22222222-2222-2222-2222-222222222222" Username="test_2" Email="test2@yahoo.com" Password="Test-2" ConfirmationPassword="Test-2">
+    <Following>100</Following>
+    <Followers>103</Followers>
+  </User>
+  <User id="33333333-3333-3333-3333-333333333333" Username="test_3" Email="test3@gmail.com" Password="Test-3" ConfirmationPassword="Test-3">
+    <Following>100</Following>
+    <Followers>103</Followers>
+  </User>
+  <User id="2e004b4a-7edc-412f-bd75-03fd52fd26cc" Username="Dia_3" Email="dia_3@gmail.com" Password="" ConfirmationPassword="">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="985ce773-e4fd-4669-a044-da27b864ce6b" Username="usernamenou_1" Email="usrnamenou_1@gmail.com" Password="" ConfirmationPassword="">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="dd35483f-494f-4069-aecd-0fb7fd6530a8" Username="incercam_iar_1" Email="incercarenaspa@yahoo.com" Password="diana" ConfirmationPassword="diana">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="1f9122c6-9951-4cb9-abe7-1a30c44820da" Username="user_8" Email="user8@yahoo.com" Password="User-8" ConfirmationPassword="User-8">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="00d98515-354e-4cb2-8027-f62b8c36bb4f" Username="user_9" Email="user9@yahoo.com" Password="User-9" ConfirmationPassword="User-9">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="5ba53b90-4a52-4679-94a9-17d450f353aa" Username="papushika_th4" Email="kitt98@gmail.com" Password="asdfg" ConfirmationPassword="asdfg">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="53efaecf-df10-4619-a378-5fb40687aff8" Username="diana.herta.5" Email="dialarisa@gmail.com" Password="as" ConfirmationPassword="as">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="1b5e128a-059b-448f-a868-a7b040108676" Username="astamerge_bric1" Email="vaziceu@gmail.com" Password="haha" ConfirmationPassword="haha">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+  <User id="67f6d047-c498-4297-875d-dacf7d5fbb68" Username="NOASTAM3RE_BN" Email="hihi@gmail.com" Password="yyy" ConfirmationPassword="yyy">
+    <Following>0</Following>
+    <Followers>0</Followers>
+  </User>
+</UserAccounts>
