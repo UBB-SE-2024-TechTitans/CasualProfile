@@ -20,7 +20,6 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Reposi
         {
             this.filePath = "./ProfileSocialNetworkInfoStuff/Groups.xml";
             this.GroupsRepository1 = LoadGroupsFromXML();
-            // this.groupsRepository = new List<Group>();
         }
         public GroupsRepository(List<Group> groupsRepository)
         {

@@ -21,6 +21,14 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.Entities
 
         public UserProfileSocialNetworkInfo()
         {
+            // Create mock data with default values
+            User = new User();
+            BlockedProfiles = new List<BlockedProfile>();
+            CloseFriendsProfiles = new List<CloseFriendProfile>();
+            Groups = new List<Group>();
+            RestrictedStoriesAudience = new List<User>();
+            RestrictedPostsAudience = new List<User>();
+            IsProfilePrivate = false; // Assuming the default profile privacy is set to public
         }
 
         public UserProfileSocialNetworkInfo(User user, List<BlockedProfile> blockedProfiles, List<CloseFriendProfile> closeFriendsProfiles, List<Group> groups, List<User> restrictedStoriesAudience, List<User> restrictedPostsAudience)
