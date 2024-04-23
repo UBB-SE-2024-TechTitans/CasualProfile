@@ -49,5 +49,23 @@ namespace District_3_App_Tests.RepositoryTests
 
             Assert.False(result);
         }
+
+        [Fact]
+        public void EmailExists_WithValueTrue()
+        {
+            // Arrange
+            UsersRepository usersRepository = new UsersRepository("Users.xml");
+            bool result = usersRepository.EmailExists("test0@yahoo.com");
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void EmailExists_WithValueFalse()
+        {
+            // Arrange
+            UsersRepository usersRepository = new UsersRepository("Users.xml");
+            bool result = usersRepository.EmailExists("");
+            Assert.False(result);
+        }
     }
 }
