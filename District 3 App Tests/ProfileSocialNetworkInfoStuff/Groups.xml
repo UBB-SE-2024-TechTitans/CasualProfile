@@ -1,0 +1,14 @@
+<groups>
+  <group groupId="444bcd67-4c42-4982-83d1-07649922b7e1" groupName="Group 1">
+    <members>
+      <user userId="6edbcbfc-c78b-4f09-93d9-ec0062635b2b" username="user1" password="password1" email="user1@example.com" confirmationPassword="password1Confirmation" />
+      <user userId="e8ad33cc-20ca-4272-bdf4-6a6498a38b6f" username="user2" password="password2" email="user2@example.com" confirmationPassword="password2Confirmation" />
+    </members>
+  </group>
+  <group groupId="6c7b308d-ba0d-4695-8f88-6a05f22ec90a" groupName="Group 2">
+    <members>
+      <user userId="e8ad33cc-20ca-4272-bdf4-6a6498a38b6f" username="user2" password="password2" email="user2@example.com" confirmationPassword="password2Confirmation" />
+      <user userId="d58f81be-0ed8-4e5c-a295-d2a1100b6027" username="user3" password="password3" email="user3@example.com" confirmationPassword="password3Confirmation" />
+    </members>
+  </group>
+</groups>
