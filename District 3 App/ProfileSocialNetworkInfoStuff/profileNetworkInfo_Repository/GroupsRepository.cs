@@ -18,9 +18,7 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Reposi
 
         public GroupsRepository()
         {
-            // Construct the file path relative to the executable directory
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            this.filePath = Path.Combine(baseDirectory, "ProfileSocialNetworkInfoStuff", "Groups.xml");
+            this.filePath = "./ProfileSocialNetworkInfoStuff/Groups.xml";
 
             // Load groups from XML
             this.GroupsRepository1 = LoadGroupsFromXML();
