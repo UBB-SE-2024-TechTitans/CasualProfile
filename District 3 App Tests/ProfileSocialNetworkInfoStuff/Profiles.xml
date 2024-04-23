@@ -2,7 +2,7 @@
 <ArrayOfUserProfileSocialNetworkInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <UserProfileSocialNetworkInfo>
     <User>
-      <Id>8be20fdf-bfd4-45ca-bafb-53515ed12e50</Id>
+      <Id>b8be02d9-54a6-40f8-86f2-2ed17593e0c7</Id>
       <Username>user1</Username>
       <Password>password1</Password>
       <Email>user1@example.com</Email>
@@ -16,7 +16,7 @@
     <CloseFriendsProfiles />
     <Groups>
       <Group>
-        <Id>fc3815a6-b617-40ba-9280-f82c24d7b0d8</Id>
+        <Id>28753212-33d9-4b2b-a6a6-c555dde642e8</Id>
         <GroupName>Group 1</GroupName>
         <GroupMembers />
       </Group>
