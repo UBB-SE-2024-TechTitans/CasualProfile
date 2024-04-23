@@ -1,28 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfUserProfileSocialNetworkInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <UserProfileSocialNetworkInfo>
-    <User>
-      <Id>b8be02d9-54a6-40f8-86f2-2ed17593e0c7</Id>
-      <Username>user1</Username>
-      <Password>password1</Password>
-      <Email>user1@example.com</Email>
-      <ConfirmationPassword>password1Confirmation</ConfirmationPassword>
-      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-      <FollowingCount>0</FollowingCount>
-      <FollowersCount>0</FollowersCount>
-      <Usersession>PT0S</Usersession>
-    </User>
-    <BlockedProfiles />
-    <CloseFriendsProfiles />
-    <Groups>
-      <Group>
-        <Id>28753212-33d9-4b2b-a6a6-c555dde642e8</Id>
-        <GroupName>Group 1</GroupName>
-        <GroupMembers />
-      </Group>
-    </Groups>
-    <RestrictedStoriesAudience />
-    <RestrictedPostsAudience />
-    <IsProfilePrivate>false</IsProfilePrivate>
-  </UserProfileSocialNetworkInfo>
-</ArrayOfUserProfileSocialNetworkInfo>
+<ArrayOfUserProfileSocialNetworkInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
