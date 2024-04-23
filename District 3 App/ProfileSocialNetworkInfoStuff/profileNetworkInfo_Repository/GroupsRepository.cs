@@ -19,13 +19,7 @@ namespace District_3_App.ProfileSocialNetworkInfoStuff.ProfileNetworkInfo_Reposi
         public GroupsRepository()
         {
             this.filePath = "./ProfileSocialNetworkInfoStuff/Groups.xml";
-
-            // Load groups from XML
             this.GroupsRepository1 = LoadGroupsFromXML();
-            // change the filePath to the correct path
-            // this.filePath = "D:\\University\\OOP\\Homeworks\\CasualProfile\\District 3 App\\ProfileSocialNetworkInfoStuff\\Groups.xml";
-            // this.GroupsRepository1 = LoadGroupsFromXML();
-            // this.groupsRepository = new List<Group>();
         }
         public GroupsRepository(List<Group> groupsRepository)
         {
