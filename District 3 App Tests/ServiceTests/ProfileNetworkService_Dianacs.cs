@@ -416,7 +416,7 @@ namespace District_3_App_Tests.ServiceTests
         }
 
         [Fact]
-        public void AddMemberToGroupProfile_GroupExistsAndMemberNotAdded_ShouldReturnTrue()
+        public void AddMemberToGroupProfile_GroupExistsInUserProfile_ShouldReturnTrue()
         {
             // Arrange
             this.Initialize(); // Initialize the test environment
@@ -431,20 +431,188 @@ namespace District_3_App_Tests.ServiceTests
 
             // Create mock profile social network info
             UserProfileSocialNetworkInfo currentUser = new UserProfileSocialNetworkInfo(user3, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>());
-
+            currentUser.Groups.Add(groupToAddMember);
             // Mock repository with existing profile and group
             ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(new List<UserProfileSocialNetworkInfo> { currentUser });
             GroupsRepository groupsRepository = new GroupsRepository(new List<Group> { groupToAddMember });
+            UsersRepository usersRepository = new UsersRepository(new List<User> { user1, user2, user3 });
 
-            this.service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, null);
+            this.service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, usersRepository);
 
             // Act
-            var result = this.service.AddMemberToGroupProfile(currentUser, groupToAddMember, user3);
+            this.service.AddMemberToGroupProfile(currentUser, "GroupToAddMember", "user3");
 
-            // Assert
-            Assert.True(result);
-            Assert.Contains(user3, groupToAddMember.Members); // Ensure the user is added to the group's members list
+            //var result = this.service.GetAllGroupsService().Contains(groupToAddMember);
+            //var result = groupToAddMember.GroupMembers.Contains(user3);
+            var result = this.service.GetGroupByName("GroupToAddMember").GroupMembers.Contains(user3);
+            Assert.Equal(this.service.GetGroupByName("GroupToAddMember").GroupMembers, new List<User> { user1, user2, user3 });
         }
 
+        [Fact]
+        public void AddMemberToGroupProfile_GroupNotExistsInUserProfile_ShouldReturnFalse()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+
+            // Create mock users
+            User user1 = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User user2 = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+            User user3 = new User(Guid.NewGuid(), "user3", "password3", "user3@example.com", "password3Confirmation");
+
+            // Create mock group
+            Group groupToAddMember = new Group(Guid.NewGuid(), "GroupToAddMember", new List<User> { user1, user2 });
+
+            // Create mock profile social network info
+            UserProfileSocialNetworkInfo currentUser = new UserProfileSocialNetworkInfo(user3, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>());
+            //currentUser.Groups.Add(groupToAddMember);
+            // Mock repository with existing profile and group
+            ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(new List<UserProfileSocialNetworkInfo> { currentUser });
+            GroupsRepository groupsRepository = new GroupsRepository(new List<Group> { groupToAddMember });
+            UsersRepository usersRepository = new UsersRepository(new List<User> { user1, user2, user3 });
+
+            this.service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, usersRepository);
+
+            // Act
+            this.service.AddMemberToGroupProfile(currentUser, "GroupToAddMember", "user3");
+
+            //var result = this.service.GetAllGroupsService().Contains(groupToAddMember);
+            //var result = groupToAddMember.GroupMembers.Contains(user3);
+            var result = this.service.GetGroupByName("GroupToAddMember").GroupMembers.Contains(user3);
+            var expected_answer = false;
+            Assert.Equal(expected_answer, result);
+        }
+
+        [Fact]
+        public void DeleteGroupToRepository_ExitingGroup_ShouldReturnTrue()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Group 1", new List<User>());
+            var current_value = this.service.DeleteGroupFromRepository("Group 1");
+            var expected_value = true;
+            Assert.Equal(expected_value, current_value);
+            
+        }
+
+        [Fact]
+        public void DeleteGroupToRepository_NewGroup_ShouldReturnFalse()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Group 1", new List<User>());
+            var current_value = this.service.DeleteGroupFromRepository("Group that does not exist");
+            var expected_value = false;
+            Assert.Equal(expected_value, current_value);
+
+        }
+
+        [Fact]
+        public void GetGroupByName_GroupExists_ShouldReturnGroup()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Group 1", new List<User>());
+            var current_value = this.service.GetGroupByName("Group 1");
+            var expected_value = new Group(Guid.NewGuid(), "Group 1", new List<User>());
+            Assert.Equal(expected_value, current_value);
+        }
+
+        [Fact]
+        public void GetGroupByName_GroupDoesNotExist_ShouldReturnNull()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Group 1", new List<User>());
+            var current_value = this.service.GetGroupByName("Group that does not exist");
+            Assert.Null(current_value);
+        }
+
+        [Fact]
+        public void GetAllGroupsService_ShouldReturnAllGroups()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            //this.service.CreateGroupToRepository("Group 1", new List<User>());
+            //this.service.CreateGroupToRepository("Group 2", new List<User>());
+            //this.service.CreateGroupToRepository("Group 3", new List<User>());
+            this.service = new ProfileNetworkInfoService(new GroupsRepository(new List<Group>()), new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(), new UsersRepository(new List<User>()));
+            Group group1 = new Group(Guid.NewGuid(), "Group 1", new List<User>());
+            Group group2 = new Group(Guid.NewGuid(), "Group 2", new List<User>());
+            Group group3 = new Group(Guid.NewGuid(), "Group 3", new List<User>());
+            this.service.GetAllGroupsService().Insert(0, group1);
+            this.service.GetAllGroupsService().Insert(1, group2);
+            this.service.GetAllGroupsService().Insert(2, group3);
+            var current_value = this.service.GetAllGroupsService();
+            var expected_value = new List<Group> { group1, group2, group3 };
+            Assert.Equal(expected_value, current_value);
+        }
+
+        [Fact]
+        public void GetProfileSocialNetworkInfoByUser_UserNotExists_ShouldReturnFalse()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            UserProfileSocialNetworkInfo profile = new UserProfileSocialNetworkInfo(new User(Guid.NewGuid(), "userTest", "password1", "user@yahoo.com", "password1Confirmation"), new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>());  
+            var value = this.service.AddProfileSocialNetworkInfo(profile);
+            var current_value = this.service.GetProfileSocialNetworkInfoByUser("user not found");
+            var expected_value = profile;
+            Assert.True(value);
+            Assert.NotEqual(expected_value, current_value);
+        }
+
+        [Fact]
+        public void AddMemberToGroup_GroupExistsAndUserExists_ShouldReturnTrue()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Existent Group", new List<User>());
+            User user = new User(Guid.NewGuid(), "user existent", "password1", "user@email", "password1Confirmation");
+            this.service.AddProfileSocialNetworkInfo(new UserProfileSocialNetworkInfo(user, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>()));
+            var current_value = this.service.AddMemberToGroup("Existent Group", user);
+            var expected_value = true;
+            Assert.Equal(expected_value, current_value);
+
+        }
+
+        [Fact]
+        public void AddMemberToGroup_UserAlreadyInGroup_ShouldReturnFalse()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Existent Group", new List<User>());
+            User user = new User(Guid.NewGuid(), "user existent", "password1", "user@email", "password1Confirmation");
+            this.service.AddProfileSocialNetworkInfo(new UserProfileSocialNetworkInfo(user, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>()));
+            this.service.AddMemberToGroup("Existent Group", user);
+            var current_value = this.service.AddMemberToGroup("Existent Group", user);
+            var expected_value = false;
+            Assert.Equal(expected_value, current_value);
+        }
+
+        [Fact]
+        public void RemoveMemberFromGroup_GroupExistsAndUserExists_ShouldReturnTrue()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Existent Group", new List<User>());
+            User user = new User(Guid.NewGuid(), "user existent", "password1", "@email", "password1Confirmation");
+            this.service.AddProfileSocialNetworkInfo(new UserProfileSocialNetworkInfo(user, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>()));
+            this.service.AddMemberToGroup("Existent Group", user);
+            var current_value = this.service.RemoveMemberFromGroup("Existent Group", user);
+            var expected_value = true;
+            Assert.Equal(expected_value, current_value);
+        }
+
+        [Fact]
+        public void RemoveMemberFromGroup_UserNotInGroup_ShouldReturnFalse()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+            this.service.CreateGroupToRepository("Existent Group", new List<User>());
+            User user = new User(Guid.NewGuid(), "user existent", "password1", "@email", "password1Confirmation");
+            this.service.AddProfileSocialNetworkInfo(new UserProfileSocialNetworkInfo(user, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>()));
+            var current_value = this.service.RemoveMemberFromGroup("Existent Group", user);
+            var expected_value = false;
+            Assert.Equal(expected_value, current_value);
+        }
     }
 }

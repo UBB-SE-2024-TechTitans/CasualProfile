@@ -2,118 +2,7 @@
 <ArrayOfUserProfileSocialNetworkInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <UserProfileSocialNetworkInfo>
     <User>
-      <Id>250d76de-db73-4fd9-93d0-d4535be7c0f3</Id>
-      <Username>user1</Username>
-      <Password>password1</Password>
-      <Email>user1@example.com</Email>
-      <ConfirmationPassword>password1Confirmation</ConfirmationPassword>
-      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-      <FollowingCount>0</FollowingCount>
-      <FollowersCount>0</FollowersCount>
-      <Usersession>PT0S</Usersession>
-    </User>
-    <BlockedProfiles>
-      <BlockedProfile>
-        <User>
-          <Id>8cfbeafa-08fa-4a1c-b89e-361e51ab9b32</Id>
-          <Username>black_ship</Username>
-          <Password>password4</Password>
-          <Email>user4@example.com</Email>
-          <ConfirmationPassword>password4Confirmation</ConfirmationPassword>
-          <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-          <FollowingCount>0</FollowingCount>
-          <FollowersCount>0</FollowersCount>
-          <Usersession>PT0S</Usersession>
-        </User>
-        <BlockDate>2024-04-24T00:29:56.4754152+03:00</BlockDate>
-      </BlockedProfile>
-    </BlockedProfiles>
-    <CloseFriendsProfiles />
-    <Groups>
-      <Group>
-        <Id>f3c70966-4897-4fe2-8232-981a5813ac0a</Id>
-        <GroupName>Group 1</GroupName>
-        <GroupMembers>
-          <User>
-            <Id>250d76de-db73-4fd9-93d0-d4535be7c0f3</Id>
-            <Username>user1</Username>
-            <Password>password1</Password>
-            <Email>user1@example.com</Email>
-            <ConfirmationPassword>password1Confirmation</ConfirmationPassword>
-            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-            <FollowingCount>0</FollowingCount>
-            <FollowersCount>0</FollowersCount>
-            <Usersession>PT0S</Usersession>
-          </User>
-          <User>
-            <Id>23f8fb09-06e9-4a54-94b2-b804f56709ee</Id>
-            <Username>user2</Username>
-            <Password>password2</Password>
-            <Email>user2@example.com</Email>
-            <ConfirmationPassword>password2Confirmation</ConfirmationPassword>
-            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-            <FollowingCount>0</FollowingCount>
-            <FollowersCount>0</FollowersCount>
-            <Usersession>PT0S</Usersession>
-          </User>
-        </GroupMembers>
-      </Group>
-    </Groups>
-    <RestrictedStoriesAudience />
-    <RestrictedPostsAudience />
-    <IsProfilePrivate>false</IsProfilePrivate>
-  </UserProfileSocialNetworkInfo>
-  <UserProfileSocialNetworkInfo>
-    <User>
-      <Id>23f8fb09-06e9-4a54-94b2-b804f56709ee</Id>
-      <Username>user2</Username>
-      <Password>password2</Password>
-      <Email>user2@example.com</Email>
-      <ConfirmationPassword>password2Confirmation</ConfirmationPassword>
-      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-      <FollowingCount>0</FollowingCount>
-      <FollowersCount>0</FollowersCount>
-      <Usersession>PT0S</Usersession>
-    </User>
-    <BlockedProfiles />
-    <CloseFriendsProfiles />
-    <Groups>
-      <Group>
-        <Id>4cd2f851-c537-4133-b52b-d4a8b8a0a0d2</Id>
-        <GroupName>Group 2</GroupName>
-        <GroupMembers>
-          <User>
-            <Id>23f8fb09-06e9-4a54-94b2-b804f56709ee</Id>
-            <Username>user2</Username>
-            <Password>password2</Password>
-            <Email>user2@example.com</Email>
-            <ConfirmationPassword>password2Confirmation</ConfirmationPassword>
-            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-            <FollowingCount>0</FollowingCount>
-            <FollowersCount>0</FollowersCount>
-            <Usersession>PT0S</Usersession>
-          </User>
-          <User>
-            <Id>9f031a65-6b0d-4355-9d82-eebd7b598df7</Id>
-            <Username>user3</Username>
-            <Password>password3</Password>
-            <Email>user3@example.com</Email>
-            <ConfirmationPassword>password3Confirmation</ConfirmationPassword>
-            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-            <FollowingCount>0</FollowingCount>
-            <FollowersCount>0</FollowersCount>
-            <Usersession>PT0S</Usersession>
-          </User>
-        </GroupMembers>
-      </Group>
-    </Groups>
-    <RestrictedStoriesAudience />
-    <RestrictedPostsAudience />
-    <IsProfilePrivate>false</IsProfilePrivate>
-  </UserProfileSocialNetworkInfo>
-  <UserProfileSocialNetworkInfo>
-    <User>
-      <Id>9f031a65-6b0d-4355-9d82-eebd7b598df7</Id>
+      <Id>63f44e43-111c-46f7-ae2e-66a20af38590</Id>
       <Username>user3</Username>
       <Password>password3</Password>
       <Email>user3@example.com</Email>
@@ -125,22 +14,36 @@
     </User>
     <BlockedProfiles />
     <CloseFriendsProfiles />
-    <Groups />
-    <RestrictedStoriesAudience />
-    <RestrictedPostsAudience />
-    <IsProfilePrivate>false</IsProfilePrivate>
-  </UserProfileSocialNetworkInfo>
-  <UserProfileSocialNetworkInfo>
-    <User>
-      <Id>00000000-0000-0000-0000-000000000000</Id>
-      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-      <FollowingCount>0</FollowingCount>
-      <FollowersCount>0</FollowersCount>
-      <Usersession>PT0S</Usersession>
-    </User>
-    <BlockedProfiles />
-    <CloseFriendsProfiles />
-    <Groups />
+    <Groups>
+      <Group>
+        <Id>530cbaa9-0c62-4036-a914-3071556d5c55</Id>
+        <GroupName>GroupToAddMember</GroupName>
+        <GroupMembers>
+          <User>
+            <Id>c01a17a6-b4ad-4d3a-9a81-dc88050e192f</Id>
+            <Username>user1</Username>
+            <Password>password1</Password>
+            <Email>user1@example.com</Email>
+            <ConfirmationPassword>password1Confirmation</ConfirmationPassword>
+            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+            <FollowingCount>0</FollowingCount>
+            <FollowersCount>0</FollowersCount>
+            <Usersession>PT0S</Usersession>
+          </User>
+          <User>
+            <Id>c211316f-2d27-4186-8f49-a38f171913a6</Id>
+            <Username>user2</Username>
+            <Password>password2</Password>
+            <Email>user2@example.com</Email>
+            <ConfirmationPassword>password2Confirmation</ConfirmationPassword>
+            <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+            <FollowingCount>0</FollowingCount>
+            <FollowersCount>0</FollowersCount>
+            <Usersession>PT0S</Usersession>
+          </User>
+        </GroupMembers>
+      </Group>
+    </Groups>
     <RestrictedStoriesAudience />
     <RestrictedPostsAudience />
     <IsProfilePrivate>false</IsProfilePrivate>
