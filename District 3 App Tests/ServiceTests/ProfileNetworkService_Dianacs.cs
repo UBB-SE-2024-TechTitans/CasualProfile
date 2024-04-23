@@ -364,6 +364,87 @@ namespace District_3_App_Tests.ServiceTests
             Assert.False(result);
         }
 
+        [Fact]
+        public void GetUserByName_UserExists_ShouldReturnUser()
+        {
+            this.Initialize();
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            var current_answer = this.service.GetUserByName("user1");
+            var expected_answer = this.service.GetProfileSocialNetworkInfoByUser(username: "user1").User;
+            Assert.Equal(expected_answer, current_answer);
+        }
+
+        [Fact]
+        public void GetUserByName_UserDoesntExist_ShouldReturnNull()
+        {
+            this.Initialize();
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            var current_answer = this.service.GetUserByName("user30");
+            Assert.Null(current_answer);
+        }
+
+        [Fact]
+        public void GetProfileSocialNetworkInfoByUser_UserDoesntExist_ShouldReturnNull()
+        {
+            this.Initialize();
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            var current_answer = this.service.GetProfileSocialNetworkInfoByUser(username: "user30");
+            Assert.Null(current_answer);
+        }
+
+        [Fact]
+        public void GetBlockedProfileByName_UserExists_ShouldReturnBlockedProfiles()
+        {
+            this.Initialize();
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            DateTime now = DateTime.Now;
+            User user = new User(Guid.NewGuid(), "blocked", "password4", "uss@yahoo.com", "password4Confirmation");
+            this.profile.BlockedProfiles.Add(new BlockedProfile(user, now));
+
+            var current_answer = this.service.GetBlockedProfileByName(this.profile, "blocked");
+            var expected_answer = this.profile.BlockedProfiles[0];
+            Assert.Equal(expected_answer, current_answer);
+        }
+
+        [Fact]
+        public void GetBlockedProfileByName_UserDoesntExist_ShouldReturnNull()
+        {
+            this.Initialize();
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            var current_answer = this.service.GetBlockedProfileByName(this.profile, "blocked");
+            Assert.Null(current_answer);
+        }
+
+        [Fact]
+        public void AddMemberToGroupProfile_GroupExistsAndMemberNotAdded_ShouldReturnTrue()
+        {
+            // Arrange
+            this.Initialize(); // Initialize the test environment
+
+            // Create mock users
+            User user1 = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User user2 = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+            User user3 = new User(Guid.NewGuid(), "user3", "password3", "user3@example.com", "password3Confirmation");
+
+            // Create mock group
+            Group groupToAddMember = new Group(Guid.NewGuid(), "GroupToAddMember", new List<User> { user1, user2 });
+
+            // Create mock profile social network info
+            UserProfileSocialNetworkInfo currentUser = new UserProfileSocialNetworkInfo(user3, new List<BlockedProfile>(), new List<CloseFriendProfile>(), new List<Group>(), new List<User>(), new List<User>());
+
+            // Mock repository with existing profile and group
+            ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(new List<UserProfileSocialNetworkInfo> { currentUser });
+            GroupsRepository groupsRepository = new GroupsRepository(new List<Group> { groupToAddMember });
+
+            this.service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, null);
+
+            // Act
+            var result = this.service.AddMemberToGroupProfile(currentUser, groupToAddMember, user3);
+
+            // Assert
+            Assert.True(result);
+            Assert.Contains(user3, groupToAddMember.Members); // Ensure the user is added to the group's members list
+        }
 
     }
 }
