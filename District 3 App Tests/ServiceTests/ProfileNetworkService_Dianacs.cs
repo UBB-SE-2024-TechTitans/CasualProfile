@@ -8,6 +8,7 @@ namespace District_3_App_Tests.ServiceTests
     public class ProfileNetworkInfoServiceTests
     {
         ProfileNetworkInfoService service;
+        ProfileNetworkInfoService service_no_users;
         UserProfileSocialNetworkInfo profile;
 
         private void Initialize()
@@ -52,8 +53,11 @@ namespace District_3_App_Tests.ServiceTests
             List<UserProfileSocialNetworkInfo> profiles = new List<UserProfileSocialNetworkInfo> { profile1, profile2, profile3 };
 
             ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(profiles);
+            ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository_nousers = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(new List<UserProfileSocialNetworkInfo> { });
             UsersRepository usersRepository = new UsersRepository(new List<User> { user1, user2, user3, user4 });
+            UsersRepository usersRepository_nousers = new UsersRepository(new List<User> {});
             this.service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, usersRepository);
+            this.service_no_users= new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository_nousers, usersRepository_nousers);
             this.profile = new UserProfileSocialNetworkInfo();
         }
 
@@ -363,6 +367,432 @@ namespace District_3_App_Tests.ServiceTests
             // Assert
             Assert.False(result);
         }
+        [Fact]
+        public void AddBlockedProfileToCurrentUser_NewBlockedProfile_ShouldReturnTrue()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            BlockedProfile blockedProfileToAdd = new BlockedProfile(blockedUser, DateTime.Now);
+
+            // Arrange
+            var service = this.service;
+            //add the user first
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+
+            // Act
+            var result = service.AddBlockedProfileToCurrentUser(userProfile, blockedProfileToAdd);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void AddBlockedProfileToCurrentUser_BlockedProfileAlreadyExists_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info with an existing blocked profile
+            BlockedProfile existingBlockedProfile = new BlockedProfile(blockedUser, DateTime.Now);
+            List<BlockedProfile> blockedProfiles = new List<BlockedProfile> { existingBlockedProfile };
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            BlockedProfile blockedProfileToAdd = new BlockedProfile(blockedUser, DateTime.Now);
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            service.AddBlockedProfileToCurrentUser(userProfile, blockedProfileToAdd);
+
+            // Act
+            var result = service.AddBlockedProfileToCurrentUser(userProfile, blockedProfileToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void AddBlockedProfileToCurrentUser_ProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing profile
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            BlockedProfile blockedProfileToAdd = new BlockedProfile(blockedUser, DateTime.Now);
+
+            // Arrange
+            var service = this.service;
+
+            // Act
+            var result = service.AddBlockedProfileToCurrentUser(userProfile, blockedProfileToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void RemoveBlockedProfileFromCurrentUser_BlockedProfileExists_ShouldReturnTrue()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info with an existing blocked profile
+            BlockedProfile blockedProfileToRemove = new BlockedProfile(blockedUser, DateTime.Now);
+            List<BlockedProfile> blockedProfiles = new List<BlockedProfile> { blockedProfileToRemove };
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            service.AddBlockedProfileToCurrentUser(userProfile, blockedProfileToRemove);
+
+            // Act
+            var result = service.RemoveBlockedProfileFromCurrentUser(userProfile, blockedProfileToRemove);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void RemoveBlockedProfileFromCurrentUser_BlockedProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing blocked profile
+            List<BlockedProfile> blockedProfiles = new List<BlockedProfile>();
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            BlockedProfile blockedProfileToRemove = new BlockedProfile(blockedUser, DateTime.Now);
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+
+            // Act
+            var result = service.RemoveBlockedProfileFromCurrentUser(userProfile, blockedProfileToRemove);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void RemoveBlockedProfileFromCurrentUser_ProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User blockedUser = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing profile
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            BlockedProfile blockedProfileToRemove = new BlockedProfile(blockedUser, DateTime.Now);
+
+            // Arrange
+            var service = this.service;
+
+            // Act
+            var result = service.RemoveBlockedProfileFromCurrentUser(userProfile, blockedProfileToRemove);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void AddRestrictedPostsAudienceUserToCurrentUser_NewUser_ShouldReturnTrue()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+
+            // Act
+            var result = service.AddRestrictedPostsAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void AddRestrictedPostsAudienceUserToCurrentUser_UserAlreadyExists_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info with an existing restricted user
+            List<User> restrictedUsers = new List<User> { userToAdd };
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            service.AddRestrictedPostsAudienceUserToCurrentUser(userProfile, userToAdd);
+            // Act
+            var result = service.AddRestrictedPostsAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void AddRestrictedPostsAudienceUserToCurrentUser_ProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing profile
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+
+            // Act
+            var result = service.AddRestrictedPostsAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void RemoveRestrictedPostsAudienceUserFromCurrentUser_UserExists_ShouldReturnTrue()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToRemove = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info with an existing restricted user
+            List<User> restrictedUsers = new List<User> { userToRemove };
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            service.AddRestrictedPostsAudienceUserToCurrentUser(userProfile, userToRemove);
+
+            // Act
+            var result = service.RemoveRestrictedPostsAudienceUserFromCurrentUser(userProfile, userToRemove);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void RemoveRestrictedPostsAudienceUserFromCurrentUser_UserDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToRemove = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing restricted user
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+
+            // Act
+            var result = service.RemoveRestrictedPostsAudienceUserFromCurrentUser(userProfile, userToRemove);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void RemoveRestrictedPostsAudienceUserFromCurrentUser_ProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User userToRemove = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing profile
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+
+            // Act
+            var result = service.RemoveRestrictedPostsAudienceUserFromCurrentUser(userProfile, userToRemove);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void AddRestrictedStoriesAudienceUserToCurrentUser_NewUser_ShouldReturnTrue()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+
+            // Act
+            var result = service.AddRestrictedStoriesAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void AddRestrictedStoriesAudienceUserToCurrentUser_UserAlreadyExists_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User currentUser = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info with an existing restricted user
+            List<User> restrictedUsers = new List<User> { userToAdd };
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+            this.service.AddProfileSocialNetworkInfo(this.profile);
+            service.AddRestrictedStoriesAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Act
+            var result = service.AddRestrictedStoriesAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void AddRestrictedStoriesAudienceUserToCurrentUser_ProfileDoesNotExist_ShouldReturnFalse()
+        {
+            this.Initialize();
+
+            // Create mock users
+            User userToAdd = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+
+            // Create mock profile social network info without existing profile
+            UserProfileSocialNetworkInfo userProfile = this.profile;
+
+            // Arrange
+            var service = this.service;
+
+            // Act
+            var result = service.AddRestrictedStoriesAudienceUserToCurrentUser(userProfile, userToAdd);
+
+            // Assert
+            Assert.False(result);
+        }
+        [Fact]
+        public void GetAllUserProfileSocialNetworks_ReturnsCorrectList()
+        {
+            User user1 = new User(Guid.NewGuid(), "user1", "password1", "user1@example.com", "password1Confirmation");
+            User user2 = new User(Guid.NewGuid(), "user2", "password2", "user2@example.com", "password2Confirmation");
+            User user3 = new User(Guid.NewGuid(), "user3", "password3", "user3@example.com", "password3Confirmation");
+            User user4 = new User(Guid.NewGuid(), "black_ship", "password4", "user4@example.com", "password4Confirmation");
+
+            // Create mock groups
+            List<User> groupMembers1 = new List<User> { user1, user2 };
+            List<User> groupMembers2 = new List<User> { user2, user3 };
+
+            Group group1 = new Group(Guid.NewGuid(), "Group 1", groupMembers1);
+            Group group2 = new Group(Guid.NewGuid(), "Group 2", groupMembers2);
+
+            List<Group> groups = new List<Group> { group1, group2 };
+
+            // Create mock profile social network info
+            List<BlockedProfile> blockedProfiles1 = new List<BlockedProfile>();
+            blockedProfiles1.Add(new BlockedProfile(user4, DateTime.Now));
+            List<BlockedProfile> blockedProfiles2 = new List<BlockedProfile>();
+            List<BlockedProfile> blockedProfiles3 = new List<BlockedProfile>();
+
+            List<CloseFriendProfile> closeFriends1 = new List<CloseFriendProfile>();
+            List<CloseFriendProfile> closeFriends2 = new List<CloseFriendProfile>();
+            List<CloseFriendProfile> closeFriends3 = new List<CloseFriendProfile>();
+
+            List<User> restrictedStoriesAudience1 = new List<User>();
+            List<User> restrictedStoriesAudience2 = new List<User>();
+            List<User> restrictedStoriesAudience3 = new List<User>();
+
+            List<User> restrictedPostsAudience1 = new List<User>();
+            List<User> restrictedPostsAudience2 = new List<User>();
+            List<User> restrictedPostsAudience3 = new List<User>();
+
+            UserProfileSocialNetworkInfo profile1 = new UserProfileSocialNetworkInfo(user1, blockedProfiles1, closeFriends1, new List<Group> { group1 }, restrictedStoriesAudience1, restrictedPostsAudience1);
+            UserProfileSocialNetworkInfo profile2 = new UserProfileSocialNetworkInfo(user2, blockedProfiles2, closeFriends2, new List<Group> { group2 }, restrictedStoriesAudience2, restrictedPostsAudience2);
+            UserProfileSocialNetworkInfo profile3 = new UserProfileSocialNetworkInfo(user3, blockedProfiles3, closeFriends3, new List<Group>(), restrictedStoriesAudience3, restrictedPostsAudience3);
+
+            GroupsRepository groupsRepository = new GroupsRepository(groups);
+            List<UserProfileSocialNetworkInfo> profiles = new List<UserProfileSocialNetworkInfo> { profile1, profile2, profile3 };
+
+            ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(profiles);
+            ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo> profileNetworkInfoRepository_nousers = new ProfileNetworkInfoRepository<UserProfileSocialNetworkInfo>(new List<UserProfileSocialNetworkInfo> { });
+            UsersRepository usersRepository = new UsersRepository(new List<User> { user1, user2, user3, user4 });
+            UsersRepository usersRepository_nousers = new UsersRepository(new List<User> { });
+            service = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository, usersRepository);
+            service_no_users = new ProfileNetworkInfoService(groupsRepository, profileNetworkInfoRepository_nousers, usersRepository_nousers);
+            profile = new UserProfileSocialNetworkInfo();
+
+            // Act
+            var result = service.GetAllUserProfileSocialNetworks();
+
+            // Assert
+            Assert.Equal(profiles, result);
+        }
+
+        [Fact]
+        public void GetAllUserProfileSocialNetworks_ReturnsEmptyList_WhenNoProfilesExist()
+        {
+            this.Initialize();
+
+            // Arrange
+            var service = this.service_no_users;
+
+            // Act
+            var result = service.GetAllUserProfileSocialNetworks();
+
+            // Assert
+            Assert.Empty(result);
+        }
+
+
 
         [Fact]
         public void GetUserByName_UserExists_ShouldReturnUser()
